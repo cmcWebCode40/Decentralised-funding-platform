@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://markdown-editor.demos.testnet.verida.io/assets/schemas/schema.json",
+    "name": "https://markdown-editor.demos.testnet.verida.io/assets/schemas",
+    "title": "Notes",
+    "titlePlural": "Markdown Notes",
+    "description": "Markdown Notes for saving users data",
+    "type": "object",
+    "database": {
+        "name": "markdown_notes",
+        "indexes": {
+            "title": ["title"],
+            "insertedAt": ["insertedAt"]
+        }
+    },
+    "appearance": {
+        "style": {
+            "color": "#FF886E",
+            "icon": "../../images/verida_logo.svg"
+        }
+    },
+    "layouts": {
+        "create": [
+            "title",
+            "body",
+            "isFavorite"
+        ],
+        "view": [
+            "title",
+            "body",
+            "isFavorite",
+            "did"
+        ]
+    },
+    "allOf": [
+        { "$ref": "https://core.schemas.verida.io/base/v0.1.0/schema.json" },
+        {
+            "properties": {
+                "title": {
+                    "title": "Title",
+                    "type": "string"
+                },
+                "body": {
+                    "title": "Body",
+                    "type": "string"
+                },
+                "isFavorite": {
+                    "title": "Favorite",
+                    "type": "boolean"
+                }
+            },
+            "required": ["title", "body"]
+        }
+    ]
+  }
