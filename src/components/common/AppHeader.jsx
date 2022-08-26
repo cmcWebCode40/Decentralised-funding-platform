@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/People";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import Chip from "@mui/material/Chip";
 
 import useReach from "../../hooks/useReach";
@@ -25,7 +25,7 @@ const AppHeader = () => {
 		<AppBar position='static'>
 			<Container maxWidth='xl'>
 				<Toolbar disableGutters>
-					<AdbIcon
+					<CurrencyExchangeIcon
 						color='#fff'
 						sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "#fff" }}
 					/>

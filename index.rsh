@@ -15,8 +15,6 @@
 const message = Bytes(22);
 
 export const main = Reach.App(() => {
-	setOptions({ untrustworthyMaps: true });
-
 	const FundRaiser = Participant("FundRaiser", {
 		...hasRandom,
 		metaDataHash: Bytes(256),
@@ -100,29 +98,6 @@ export const main = Reach.App(() => {
 		FundRaiser.interact.ownerCashOut();
 		transfer(balance()).to(FundRaiser);
 	}
-	// else {
-	// 	eventLogger.log(message.pad("target-not-reached"));
-	// 	FundRaiser.interact.refundContributors();
-	// 	const fromMap = (m) =>
-	// 		fromMaybe(
-	// 			m,
-	// 			() => ({ address: lastAddress, amt: 0 }),
-	// 			(x) => x
-	// 		);
-	// 	var [newCount, currentBalance] = [count, balance()];
-	// 	invariant(balance() == currentBalance);
-	// 	while (newCount >= 1) {
-	// 		commit();
-	// 		FundRaiser.publish();
-	// 		if (balance() >= fromMap(contributorsList[newCount]).amt) {
-	// 			transfer(fromMap(contributorsList[newCount]).amt).to(
-	// 				fromMap(contributorsList[newCount]).address
-	// 			);
-	// 		}
-	// 		[newCount, currentBalance] = [newCount - 1, balance()];
-	// 		continue;
-	// 	}
-	// }
 	transfer(balance()).to(FundRaiser);
 	eventLogger.log(message.pad("close-contribution"));
 	commit();

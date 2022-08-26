@@ -1,3 +1,4 @@
+import { Alert, AlertTitle } from "@mui/material";
 import Box from "@mui/material/Box";
 import React from "react";
 import { AppFooter } from "../components/common";
@@ -12,6 +13,11 @@ const AppLayouts = ({ children }) => {
 			}}
 		>
 			<AppHeader />
+			<Alert severity='info'>
+				<AlertTitle>Info</AlertTitle>
+				You Can interact with this dapp using <strong>MyAlgo Wallet</strong> ,
+				support for metamask and wallet connect coming soon..🚀🚀
+			</Alert>
 			<Box>{children}</Box>
 			<AppFooter />
 		</Box>

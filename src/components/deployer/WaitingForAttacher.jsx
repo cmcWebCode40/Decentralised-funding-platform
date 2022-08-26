@@ -37,13 +37,14 @@ const WaitingForAttacher = () => {
 			<Box
 				component='pre'
 				sx={{
-					background: "#f4f4f4",
+					background: "#f3f3f3",
 					color: "#000",
 					width: "100%",
 					height: "7rem",
+					borderRadius: 3,
 					margin: "1rem auto",
-					padding: 2,
-					border: "2px solid #333",
+					padding: 1,
+					border: "2px solid #ccc",
 				}}
 			>
 				{contractInfo}

@@ -12,6 +12,7 @@ stdLib.setWalletFallback(
 		MyAlgoConnect,
 	})
 );
+
 // const deadline = { ETH: 10, ALGO: 100, CFX: 1000 }[reach.connector];
 
 class Reach {
@@ -32,7 +33,6 @@ class Reach {
 		const balance = await this.getbalance(account);
 		const address = account.getAddress();
 		this.user = { account, balance, address };
-		console.log(this.user);
 	}
 
 	async getDefualtAccount() {
@@ -41,8 +41,6 @@ class Reach {
 
 	async getbalance(account) {
 		const userBalance = await this.stdLib.balanceOf(account);
-
-		console.log(this.toStandardUnit(userBalance));
 		return this.toStandardUnit(userBalance, 1);
 	}
 
@@ -65,46 +63,8 @@ class Reach {
 		return this.user.account.contract(backend, JSON.parse(ctcInfo));
 	}
 
-	getContract() {
-		return this.contract;
-	}
-
-	setContract(contract) {
-		// this.contract = contract;
-		contract.events.log.monitor(this.loggedEvent);
-	}
-
 	getRandomNumber() {
 		return this.stdLib.hasRandom;
-	}
-
-	async loggedEvent({ when, what }) {
-		const message = what[0];
-		// console.log(message);
-		const state = (x) => x.padEnd(22, "\u0000");
-
-		switch (message) {
-			case state("intialise-contribution"):
-				console.log(`Initiating contract operations!`);
-				break;
-			case state("timeout"):
-				console.log(`The contribution has encountered a timeout `);
-				break;
-			case state("target-reached"):
-				console.log(
-					`The conditions are satisfied, transferring funds to the FundRaiser!`
-				);
-				break;
-			case state("target-not-reached"):
-				console.log(`The conditions were not satisfied, initiating refund!`);
-				break;
-			case state("close-contribution"):
-				console.log(`The contract is closing!`);
-				break;
-			default:
-				console.log(`An unhandled log...`);
-				break;
-		}
 	}
 }
 

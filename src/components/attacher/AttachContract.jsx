@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import useReach from "../../hooks/useReach";
+import { SELECT_USER_VIEW } from "../../constants";
 
 const AttachContract = () => {
 	const [ctcInfoStr, setCtcInfoStr] = useState("");
-	const { attachContract } = useReach();
+	const { attachContract, setViews } = useReach();
+
+	const goBack = () => {
+		setViews({ view: SELECT_USER_VIEW });
+	};
+
 	return (
 		<Box
 			sx={{
@@ -23,6 +31,15 @@ const AttachContract = () => {
 					marginTop: 7,
 				}}
 			>
+				<IconButton
+					sx={{
+						marginX: 2,
+					}}
+					onClick={goBack}
+					aria-label='ArrowBackIosIcon'
+				>
+					<ArrowBackIcon />
+				</IconButton>{" "}
 				Please paste the contract info here:
 			</Typography>
 			<TextField

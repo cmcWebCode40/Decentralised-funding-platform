@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { ReactComponent as FundWalletSvg } from "../../assets/fund_wallet.svg";
 import useReach from "../../hooks/useReach";
 
 const FundWallet = () => {
@@ -39,7 +38,6 @@ const FundWallet = () => {
 				Would you like to fund your account with additional {standardUnit}?
 				(This only works on certain devnets)
 			</Typography>
-			<FundWalletSvg height='200' />
 			<TextField
 				label='With normal TextField'
 				id='filled-start-adornment'

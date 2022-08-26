@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import TextField from "@mui/material/TextField";
 import useReach from "../../hooks/useReach";
 import VeridaAPI from "../../api/verida";
 import ReachAPI from "../../api/reach";
+import { SELECT_USER_VIEW } from "../../constants";
 
 const DonationForm = () => {
-	const { deployContract } = useReach();
+	const { deployContract, setViews } = useReach();
 	const [values, setValues] = useState({});
 	const [imageUrl, setImageurl] = useState("");
 	const [hasConnected, setHasConnected] = useState(false);
@@ -85,6 +88,10 @@ const DonationForm = () => {
 		}
 	};
 
+	const goBack = () => {
+		setViews({ view: SELECT_USER_VIEW });
+	};
+
 	return (
 		<Box
 			sx={{
@@ -100,6 +107,15 @@ const DonationForm = () => {
 					marginY: 5,
 				}}
 			>
+				<IconButton
+					onClick={goBack}
+					sx={{
+						marginX: 2,
+					}}
+					aria-label='ArrowBackIosIcon'
+				>
+					<ArrowBackIcon />
+				</IconButton>
 				Create Funding Information
 			</Typography>
 			<form onSubmit={createDonationCampaign}>
@@ -140,7 +156,6 @@ const DonationForm = () => {
 					name='duration'
 					type='number'
 					required
-					step='.01'
 					sx={{
 						marginY: 1,
 					}}

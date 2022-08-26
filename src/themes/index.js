@@ -13,4 +13,7 @@ export const theme = createTheme({
 			main: "#ba1a1a",
 		},
 	},
+	typography: {
+		fontFamily: ["Sora", "sans-serif"].join(","),
+	},
 });

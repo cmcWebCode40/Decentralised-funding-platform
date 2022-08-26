@@ -1,6 +1,7 @@
 import React from "react";
 import { DonationCard } from "../common";
 import Box from "@mui/material/Box";
+import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -9,9 +10,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useReach from "../../hooks/useReach";
+import ReachAPI from "../../api/reach";
 
 const DonateAsAttacher = () => {
-	const { contribute } = useReach();
+	const { contribute, isLoading } = useReach();
 	const [open, setOpen] = React.useState(false);
 	const [amount, setAmount] = React.useState(0);
 
@@ -24,6 +26,7 @@ const DonateAsAttacher = () => {
 	};
 
 	const submitContribution = () => {
+		handleClose();
 		contribute(amount);
 	};
 
@@ -40,11 +43,15 @@ const DonateAsAttacher = () => {
 		>
 			<DonationCard />
 			<Box sx={{ marginY: 5, marginX: 3 }}>
-				<Button variant='contained' onClick={handleClickOpen}>
+				<LoadingButton
+					variant='contained'
+					loading={isLoading}
+					onClick={handleClickOpen}
+				>
 					Contribute
-				</Button>
+				</LoadingButton>
 				<Dialog open={open} onClose={handleClose}>
-					<DialogTitle>Subscribe</DialogTitle>
+					<DialogTitle>Donate Funds</DialogTitle>
 					<DialogContent>
 						<DialogContentText>
 							Please ensure you have a sufficient balance to contribute
@@ -53,7 +60,7 @@ const DonateAsAttacher = () => {
 							autoFocus
 							margin='dense'
 							id='amount'
-							label='Amount'
+							label={`Amount in ${ReachAPI.standardUnit}`}
 							type='text'
 							onChange={(e) => setAmount(+e.target.value)}
 							fullWidth
