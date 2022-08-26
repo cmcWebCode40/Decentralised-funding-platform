@@ -98,6 +98,7 @@ export const main = Reach.App(() => {
 		FundRaiser.interact.ownerCashOut();
 		transfer(balance()).to(FundRaiser);
 	}
+	// @todo : user should be able to claim their funds back if the funding target is not reached
 	transfer(balance()).to(FundRaiser);
 	eventLogger.log(message.pad("close-contribution"));
 	commit();

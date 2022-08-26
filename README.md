@@ -5,6 +5,8 @@
 
 This project is a decentralized platform created to assist project owners and/or individuals raise funds.
 
+website link [seek-funds](https://seek-funds.on.fleek.co) deployed on [fleek.co](https://fleek.co/)
+
 ![Seek Funds Demo](demo/fp-demo.gif)
 
 See link to full demo video [see docs](https://docs.reach.sh/)

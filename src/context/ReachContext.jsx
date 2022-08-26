@@ -174,7 +174,7 @@ const ReachContextProvider = ({ children }) => {
 					...c,
 					{
 						address: contribution[0],
-						amount: parseInt(contribution[1]),
+						amount: ReachAPI.toStandardUnit(parseInt(contribution[1])),
 					},
 				]);
 				toast.success(
